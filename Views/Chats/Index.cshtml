@@ -1,0 +1,110 @@
+﻿@model IEnumerable<chatter.Models.Chat>
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+	@Html.ActionLink("Create New", "Create")
+</p>
+
+<div id="response"></div>
+<button id="getChats" class="btn btn-primary">Get Chats</button>
+
+
+<input type="text"  id="post">
+<button id="postChats" class="btn btn-primary">Post</button>
+
+
+@section Scripts {
+	 <script>
+
+		 //AJAX request using jQuery as a helper
+		 //Notice this combines Razor syntax (@Url.Action()) in order to
+		 //have the compiler figure out the exact path of the controller,
+		 //alongside of jQuery.
+
+		 
+		 $(document).ready(function () {
+			 $("#getChats").click(
+				   function () {
+
+
+					   //   $.get("@Url.Action("TestJson","Chats")", function (response) {
+
+					   //	 alert(response);
+					   // });
+
+					   $.get("@Url.Action("TestJson","Chats")", function (serverResponse) {
+						   var jsonTest = JSON.parse(serverResponse);
+						   console.log(jsonTest);
+						   //	 $("#response").text(jsonTest.firstName);
+
+
+
+						//   $("button").click(function () {
+
+                         //    $.post("demo_test.asp", function(data,status)
+
+
+						   });
+
+
+
+
+
+
+
+
+					   })
+				   }
+				);
+
+
+         $("#postChats").click(function () {
+             var info = $('#post').val()
+
+         });
+
+				
+			 // }
+		 //  );
+
+
+
+        // $(function () {
+         //    $("button").on('click', function () {
+          //   });
+       //  });
+
+
+
+
+
+
+	 // $(document).ready(function () {
+		  //  var jsonTest = {"firstName": "Melanie", "lastName" : "McGee",
+			 //   "children" : [{"firstName" : "Mira", "age" : 13}, {"firstName": "Ethan", "age" : null}] }
+	   
+			//var result = '';
+
+		//	$.each(children, function (key,element) {
+			//	result += 'key = ' + key + ', Value = ' + element + '<br/>';
+		//	});
+
+		//	$('#resultDiv').html(result);
+	//	});
+		//now some jQuery
+	//	$("#response").text(jsonTest.children[0].firstName);
+	//	$("#response").text(jsonTest.children[1].firstName);
+		 //$("#response").text(jsonTest.children[0].age);
+
+	  
+	</script>
+}
+
+
+
+
